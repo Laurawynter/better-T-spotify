@@ -74,4 +74,6 @@ export default function Dashboard({ code }){
             <section><Player accessToken={ accessToken } trackUri={playingTrack?.uri}/></section>
         </Container>
     )
+
 }
+
