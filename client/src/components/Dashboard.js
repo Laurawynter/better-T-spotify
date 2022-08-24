@@ -8,11 +8,10 @@ import TrackSearchResults from './TrackSearchResult';
 import Player from './Player';
 import axios from 'axios';
 
-
 const spotifyApi = new SpotifyWebApi({
-
     clientId: process.env.REACT_APP_CLIENT_ID,
 })
+
 export default function Dashboard({ code }){
     const accessToken = useAuth(code)
     const [search, setSearch] = useState('')
@@ -71,9 +70,16 @@ export default function Dashboard({ code }){
     }, [search, accessToken])
     return(
         <React.Fragment>
+
             <CssBaseline />
+
             <Container maxWidth="sm">
-            <FormControl placeholder='Search Songs/Artists' value={search} onChange={e => setSearch(e.target.value)}>
+            <FormControl 
+                type="search" 
+                placeholder='Search Songs/Artists' 
+                value={search} 
+                onChange={e => setSearch(e.target.value)}
+                >
                 <InputLabel htmlFor="my-input">Search</InputLabel>
                 <Input id="my-input" aria-describedby="my-helper-text" />
                     {searchResults.map(track => (
@@ -88,8 +94,6 @@ export default function Dashboard({ code }){
                 <section>
                 <Player accessToken={ accessToken } trackUri={playingTrack?.uri}/></section>
             </FormControl>
-
-                
                 
             </Container>
         </React.Fragment>
