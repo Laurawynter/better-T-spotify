@@ -3,6 +3,7 @@ const cors = require("cors")
 const lyricsFinder = require("lyrics-finder")
 const SpotifyWebApi = require("spotify-web-api-node")
 require("dotenv").config()
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -49,6 +50,7 @@ app.get('/lyrics', async (req, res) => {
     const lyrics = (await lyricsFinder(req.query.artist, req.query.track)) || "No Lyrics Found"
     res.json({})
 })
+
 app.listen(3001)
 
 
