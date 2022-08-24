@@ -52,12 +52,3 @@ app.get('/lyrics', async (req, res) => {
 })
 
 app.listen(3001)
-
-
-
-
-
-
-
-
-

@@ -1,7 +1,8 @@
 import React, { useState, useEffect }  from 'react';
 import useAuth from './useAuth';
+import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import FormControl from '@mui/material/FormControl';
+import { FormControl, InputLabel, Input, FormHelperText } from '@mui/material';
 import SpotifyWebApi from 'spotify-web-api-node';
 import TrackSearchResults from './TrackSearchResult';
 import Player from './Player';
@@ -62,25 +63,30 @@ export default function Dashboard({ code }){
         return () => cancel = true
     }, [search, accessToken])
     return(
-        <Container className='d-flex flex-column py-2' style={{ height: '100vh' }}>
-            <FormControl type='search' placeholder='Search Songs/Artists' value={search} onChange={e => setSearch(e.target.value)}/>
-            <section className='flex-grow-1 my-2' style={{ overflow: 'auto' }}>
-            {searchResults.map(track => (
-                <TrackSearchResults track={track} key={track.uri} chooseTrack={chooseTrack}/>
-            ) )}
-            {searchResults.length === 0 && (
-                <section className="text-center" style={{ whiteSpace: "pre" }}>
-                    {lyrics}
-                </section>
-            )}
-            </section>
-            <section><Player accessToken={ accessToken } trackUri={playingTrack?.uri}/></section>
-        </Container>
+        <React.Fragment>
+            <CssBaseline />
+            <Container maxWidth="sm">
+            <FormControl placeholder='Search Songs/Artists' value={search} onChange={e => setSearch(e.target.value)}>
+                <InputLabel htmlFor="my-input">Search</InputLabel>
+                <Input id="my-input" aria-describedby="my-helper-text" />
+                    {searchResults.map(track => (
+                        <TrackSearchResults track={track} key={track.uri} chooseTrack={chooseTrack}/>
+                    ) )}
+                    {searchResults.length === 0 && (
+                        <section>
+                            {lyrics}
+                        </section>
+                    )}
+                <FormHelperText id="my-helper-text">Find your songs and your favorite artists</FormHelperText>
+                <section>
+                <Player accessToken={ accessToken } trackUri={playingTrack?.uri}/></section>
+            </FormControl>
+
+                
+                
+            </Container>
+        </React.Fragment>
+
     )
 }
-
-
-
-
-
 
