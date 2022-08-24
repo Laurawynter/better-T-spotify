@@ -19,6 +19,8 @@ export default function Dashboard({ code }){
     const [searchResults, setSearchResults] = useState([])
     const [playingTrack, setPlayingTrack] = useState()
     const [lyrics, setLyrics] = useState('')
+
+
     function chooseTrack(track) {
         setPlayingTrack(track)
         setSearch('')
@@ -33,13 +35,18 @@ export default function Dashboard({ code }){
             }
         })
         .then(res => {
+            console.log(res)
             setLyrics(res.data.lyrics)
         })
     }, [playingTrack])
+
+
     useEffect(() => {
         if(!accessToken) return
         spotifyApi.setAccessToken(accessToken)
     }, [accessToken])
+/*Hasta este punto no hace la peticion*/
+
     useEffect(() => {
         if(!search) return setSearchResults([])
         if(!accessToken) return
