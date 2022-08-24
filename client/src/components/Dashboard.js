@@ -11,6 +11,7 @@ import axios from 'axios';
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.REACT_APP_CLIENT_ID,
 })
+
 export default function Dashboard({ code }){
     const accessToken = useAuth(code)
     const [search, setSearch] = useState('')
@@ -62,7 +63,7 @@ export default function Dashboard({ code }){
     }, [search, accessToken])
     return(
         <React.Fragment>
-            
+
             <CssBaseline />
 
             <Container maxWidth="sm">
