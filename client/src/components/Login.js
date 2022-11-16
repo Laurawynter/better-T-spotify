@@ -1,6 +1,5 @@
 import React from "react";
 import Container from '@mui/material/Container';
-
 import SearchIcon from '@mui/icons-material/Search';
 
 
@@ -49,10 +48,10 @@ const styles = (theme) => ({
   root: {
     padding: theme.spacing(1),
     [theme.breakpoints.down('md')]: {
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: theme.body,
     },
     [theme.breakpoints.up('md')]: {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.body,
     },
     [theme.breakpoints.up('lg')]: {
       backgroundColor: [500],
