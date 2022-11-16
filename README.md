@@ -11,7 +11,7 @@ Mock up
     Nest js
     Node js
     CSS
-    Jest
+    Express
     TypeScript
     NPM
 
